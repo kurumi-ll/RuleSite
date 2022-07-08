@@ -1,0 +1,18 @@
+/*arrow line - 화살표 줄*/
+al {
+  display: list-item;
+  list-style-type: "▶ ";
+  margin-left: 2.5%;
+}
+/*extra line - 추가 줄*/
+el {
+  display: list-item;
+  list-style-type: "└ ";
+  margin-left: 3%;
+}
+/*extend extra line - 연장 추가 줄*/
+eel {
+  display: list-item;
+  list-style-type: "└ ";
+  margin-left: 4%;
+}
