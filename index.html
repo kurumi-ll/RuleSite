@@ -1,12 +1,9 @@
 <script type="text/javascript">
-	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
-	for (var word in mobileKeyWords){
-    if (navigator.userAgent.match(mobileKeyWords[word]) != null){
-      location.href = "main/m/index.html";
-      break;
-    } else {
-      location.href = "main/index.html";
-      break;
-    }
- }
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		location.href = "main/m/index.html";
+		break;
+	} else {
+		location.href = "main/index.html";
+		break;
+	}
  </script>
