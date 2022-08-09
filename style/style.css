@@ -4,6 +4,12 @@ al {
   list-style-type: "▶ ";
   margin-left: 2.5%;
 }
+/*star line - 별 줄*/
+sl {
+  display: list-item;
+  list-style-type: "* ";
+  margin-left: 2.5%;
+}
 /*extra line - 추가 줄*/
 el {
   display: list-item;
