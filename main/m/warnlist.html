@@ -1,252 +1,77 @@
 <!doctype html>
 <html dir="ltr" lang="ko">
+
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <style type="text/css">
-  a { text-decoration:none }
+    a {
+      text-decoration: none
+    }
+
+    header {
+      margin-top: 20px;
+    }
+
+    td:nth-child(n+2):nth-child(-n+4) {
+      text-align: center;
+    }
+
+    th:nth-child(n+2):nth-child(-n+4) {
+      text-align: center;
+    }
   </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximun-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <title>경고 리스트</title>
+  <script>
+    function warnElement(nickname, porn, politics, vibe) {
+      let tr = document.createElement("tr")
+      tr.innerHTML = `
+        <tr>
+          <td>${nickname}</td>
+          <td>${porn}</td>
+          <td>${politics}</td>
+          <td>${vibe}</td>
+        </tr>
+      `
+      return tr
+    }
+
+    window.onload = () => {
+      let warntable = document.querySelector("#warntable > tbody")
+      fetch('../../warn.tsv')
+        .then(response => response.text())
+        .then(text => {
+          let warnElements = text.split('\n')
+            .map(line => line.split('\t'))
+            .map(warns => warnElement.apply(null, warns))
+          warnElements.forEach(element => {
+            warntable.appendChild(element)
+          });
+        })
+    }
+  </script>
 </head>
+
 <body>
-  <h2>경고 리스트</h2>
+  <header>
+    <div class="container">
+      <h2>경고 리스트</h2>
+      <br>
+      경고를 받은 횟수를 가나다 순으로 적어두었습니다.<br>
+      비어있는 칸은 아무도 경고를 받지 않았다는 뜻입니다.<br>
+    </div>
+  </header>
   <br>
-  경고를 받은 횟수를 가나다 순으로 적어두었습니다.<br>
-  비어있는 칸은 아무도 경고를 받지 않았다는 뜻입니다.<br>
-  <br>
-  <details>
-      <summary style="font-size:18px">ㄱ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-          <th width="50">야짤</th>
-          <th width="50">정치</th>
-          <th width="50">분위기</th>
-        <tr>
-          <td>가루</td>
-          <td>0</td>
-          <td>2</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>거대 비둘기</td>
-          <td>0</td>
-          <td>1</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㄴ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㄷ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>달마시안</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>데아</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㄹ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>로오라</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>로키</td>
-          <td>1</td>
-          <td>1</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅁ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>마히로</td>
-          <td>1</td>
-          <td>1</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅂ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅅ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>신선</td>
-          <td>0</td>
-          <td>0</td>
-          <td>1</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅇ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>아료망</td>
-          <td>2</td>
-          <td>1</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>없음</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>유니콘</td>
-          <td>3</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅈ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅊ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>체르미아</td>
-          <td>3</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>최마뇽</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>츄체</td>
-          <td>9</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅋ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>콘가라</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅌ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅍ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-      </table>
-  </details>
-  <details>
-      <summary style="font-size:18px">ㅎ</summary>
-      <table border="1">
-        <th>닉네임ㅣ경고 사유</th>
-        <th width="50">야짤</th>
-        <th width="50">정치</th>
-        <th width="50">분위기</th>
-        <tr>
-          <td>하시타</td>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-  </details>
-  <br>
-  <br>
-  <table border="1">
-    <tr>
-      <td>마지막 리스트<br>디자인 업데이트</td>
-      <td>2022/07/08</td>
-    </tr>
-    <tr>
-      <td>마지막 경고 횟수 업데이트</td>
-      <td>2022/08/17</td>
-    </tr>
-  </table>
+  <div class="container">
+    <table class="table" id="warntable">
+      <th>닉네임</th>
+      <th width="65">야짤</th>
+      <th width="65">정치</th>
+      <th width="65">분위기</th>
+    </table>
+  </div>
   <br>
   <br>
   <br>
